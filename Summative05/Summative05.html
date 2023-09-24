@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+
+<!-- 
+	PgP 3/2/2020 updating MIS202 files to align with other assignments 
+-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap -->
+    <link href="../../ReadOnly/bootstrap.css" rel="stylesheet">
+
+    <!-- constant file to update email, firstname, lastname, starid, section on students' pages -->
+    <script src="../constants.js"></script>
+    <script src="../../ReadOnly/CourseConstants.js"></script>
+
+    <!-- model assignment file, version 1 released 2018/02/18 PgP -->
+
+    <title>MIS202 Summative05</title>
+</head>
+
+
+
+<body class="container-fluid" onload="setVariables()">
+
+    <form class="container-fluid" action="https://eprofessor.azurewebsites.net/code/ProcessFormData.asp" method="post" name="frmAssignment" id="frmAssignment">
+        <input name="InstID" id="InstID" value="00617282" type="hidden" />
+
+        <h1 class=" text-center">Web Communications
+            <br />
+        </h1>
+
+        <!-- -start-Student, class and assignment information. Assignment hard-coded, other values from constants.js file-start -->
+        <div class="row col-lg-12">
+            <div class="col-lg-3">
+                <label class="text-primary" for="FirstName">First Name:</label>
+                <input class="form-control" name="FirstName" id="FirstName" type="text" value="default first name" readonly="readonly" />
+            </div>
+            <div class="col-lg-3">
+                <label class="text-primary" for="LastName">Last Name:</label>
+                <input class="form-control" name="LastName" id="LastName" type="text" value="default last name" readonly="readonly" />
+            </div>
+            <div class="col-lg-3">
+                <label class="text-primary" for="pin">StarID:</label>
+                <input class="form-control" name="pin" id="pin" type="text" value="default StarID" readonly="readonly" />
+            </div>
+            <div class="col-lg-3">
+                <label class="text-primary" for="email">Email:</label>
+                <input class="form-control" name="email" id="email" type="email" value="default email address" readonly="readonly" />
+            </div>
+        </div>
+
+        <div class="row col-lg-12">
+            <div class="col-lg-3">
+                <label class="text-primary" for="semester">Semester:</label>
+                <input class="form-control" name="semester" id="semester" type="text" value="default" readonly="readonly" />
+            </div>
+            <div class="col-lg-3">
+                <label class="text-primary" for="class">Class:</label>
+                <input class="form-control" name="class" id="class" value="xClass" type="text" readonly="readonly" />
+            </div>
+            <div class="col-lg-3">
+                <label class="text-primary" for="section">Section:</label>
+                <input class="form-control" name="section" id="section" value="default" type="text" readonly="readonly" />
+            </div>
+            <div class="col-lg-3">
+                <label class="text-primary" for="assignment">Assignment:</label>
+                <input class="form-control" name="assignment" id="assignment" value="Summative05" type="text" readonly="readonly" />
+            </div>
+        </div>
+        <!-- -end-Student, class and assignment information-end -->
+
+        <!-- Calculate the correct path for saving the files -->
+        <script>Path = "&#92;OneDrive - MNSCU&#92;" + xClass + "&#92;" + document.getElementById("assignment").value + "&#92;"; </script>
+
+
+        <div class="col-lg-12">
+            <br />
+            <input class="text-danger btn-block btn-lg" name="Submit" value="Submit" type="submit" />
+            <br />
+        </div>
+
+        <div class="col-lg-12 h3 text-danger">
+            800 Points
+            <hr />
+        </div>
+
+        <!-- -start-objectives-start -->
+        <div class="col-lg-12"><a href="#Objectives" class="btn btn-info" data-toggle="collapse">Learning Objectives</a></div>
+        <div id="Objectives" class=" collapse in col-lg-12">
+
+            <!--Above this line similar except for Assignment number and title   -->
+
+
+            <p>
+                After completing this assignment you will be able to use a computer to
+            </p>
+            <ul>
+                <li>participate in a Internet based phone call</li>
+                <li>create and send a text message to a cell phone</li>
+                <li>conduct a web conference in which you share files and your computer screen.</li>
+                <li>begin connecting to professionals in order to begin a career enhancing network</li>
+            </ul>
+            <hr />
+        </div>
+        <!-- -end-objectives-end -->
+
+        <!-- -start-Overview -start -->
+        <div class="col-lg-12"><a href="#Overview" class="btn btn-info" data-toggle="collapse">Assignment Overview</a></div>
+
+        <div id="Overview" class="collapse in  col-lg-12">
+
+            <p>
+                The purpose of this assignment is to learn to use and leverage the Internet to allow communications between geographically dispersed groups.<br />
+                Microsoft Skype, Zoom, email and text messaging are tools that can help you creatively communicate.<br />
+                Some  considerations  are:
+            </p>
+            <ul>
+                <li>Voice Over Internet Protocol (VOIP) has reduced communications costs and is now widely used by businesses</li>
+                <li>Email programs can be used to send text and multimedia messages to cell phones</li>
+                <li>Web conferencing is becoming increasingly common, and helps businesses save money</li>
+                <li>Social networking in the workplace can boost your career and offer resources to solve problems</li>
+            </ul>
+            <p>This assignment will cover several basic collaboration   methods, you are encouraged to explore on your own to find additional   features that will make your life and present or future jobs easier.</p>
+            <p>The exercises in this assignment can be done in any order.</p>
+            <hr />
+        </div>
+
+        <!-- -end-Overview-end -->
+
+
+
+        <div class=" col-lg-12"><a href="#Exercise01" class="btn btn-info" data-toggle="collapse">Exercise 1-Voice over Internet Protocol-VOIP-Microsoft Teams</a></div>
+
+        <div id="Exercise01" class="collapse in  col-lg-12">
+
+            <p>Conference Calls</p>
+            <p>Make sure you have <a href="https://learn.winona.edu/wiki/Microsoft_Teams" class="bg-info text-white" target="_blank" >Microsoft Teams </a>installed on your laptop. <br />
+                You already have an account, see the link above for login information.</p>
+            <p>
+                For this assignment  set up a Microsoft Teams web conference call involving  members of your D2L Summative05 group.<br />
+                <br />
+                Spread out so that all participants are outside of voice range of each other.<br />
+                Feel free to have some members go out in the hall, to an empty classroom, or the Somsen 329 study room.
+                <br />
+                For best results make sure to use either ear buds, or better yet, a headset.<br />
+                If you wish, try this several times, feel free to try it outside of class time.
+            </p>
+            <p>
+                Choose a topic before you attempt the conference call.
+                <br />
+                Try something like 'the benefits of conference calling' or 'net neutrality' or some  mutually agreeable business topic such as 'web conference calls'
+    <br />
+                <br />
+                Each student must answer the following questions regarding the conference call.
+            </p>
+            <p>
+                1. (50) What were the  best 2 factors in the conference call?
+                <br />
+                Possible choices are voice delay, or lack thereof, call volume, clarity....
+                <br />
+
+			<!-- Enter your answer in the VALUE field below   GROK -->
+                <input type="text" name="q1" id="q1" size="120" maxlength="120" class="form-control" value="best factor 1:   ; best factor 2:  " />
+
+
+            </p>
+            <hr />
+            <p>
+                2. (50) What were the worst 2 factors in the conference call?
+                <br />
+                Possible choices are voice delay, or lack thereof, call volume, clarity....
+                <br />
+
+			<!-- Enter your answer in the VALUE field below   GROK -->
+                <input type="text" name="q2" id="q2" size="120" maxlength="120" class="form-control" value="worst factor 1:   ; worst factor 2:  " />
+            </p>
+            <hr />
+            <p>
+                3. (50) Do you think an application like Microsoft Teams is ready for general business use?<br />
+                What business uses do you envision?
+                <br />
+
+			<!-- Enter your answer in the VALUE field below   GROK -->
+                <input type="text" name="q3" id="q3" size="120" maxlength="120" class="form-control" value="1.Ready for use?:   ; 2. Business uses: " />
+            </p>
+            <hr />
+
+        </div>
+
+        <div class=" col-lg-12"><a href="#Exercise02" class="btn btn-info" data-toggle="collapse">Exercise 2-SMS and MMS By Email</a></div>
+
+        <div id="Exercise02" class="collapse in  col-lg-12">
+
+
+            <p>Review the material on the SMS web page at:  <a href="https://eprofessor.azurewebsites.net/helpfiles/sms/default.htm" class="bg-info text-white" target="_blank">SMS info</a> </p>
+            <p>
+                List of worldwide SMS gateway domains:&nbsp;<a href="http://martinfitzpatrick.name/list-of-email-to-sms-gateways/" class="bg-info text-white" target="_blank">http://martinfitzpatrick.name/list-of-email-to-sms-gateways/</a><br />
+                or:
+	<a href="http://sms-gateway-service.com/?page_id=13http://sms-gateway-service.com/?page_id=13" class="bg-info text-white" target="_blank">http://sms-gateway-service.com/?page_id=13</a>
+            </p>
+            <p>
+                Feel free to use your email account to send a text message to your cell phone, if you have text messaging.&nbsp;
+  <br />
+                Realize if you send an SMS via email that the receiver may be charged a fee 
+  depending on their text message contract.
+            </p>
+            <p>
+                MMS gateway domains:&nbsp;
+	<a href="http://basicstate.com/htm/page.htm" class="bg-info text-white" target="_blank">http://basicstate.com/htm/page.htm</a>
+            </p>
+            <p>
+                4. (50) What are three ways that a business could make use of SMS via email for improving customer service, without creating SMS spam?<br />
+                Think about automating processes.<br />
+                <br />
+                Ref: <a href="http://en.wikipedia.org/wiki/Text_messaging#Text_message_spam" class="bg-info text-white" target="_blank">http://en.wikipedia.org/wiki/Text_messaging#Text_message_spam</a><br />
+
+			<!-- Enter your answer in the VALUE field below   GROK -->
+                <input type="text" name="q4" id="q4" size="120" maxlength="120" class="form-control" value="1:   ; 2:  ; 3:   " />
+            </p>
+            <hr />
+
+
+        </div>
+
+
+        <div class="col-lg-12"><a href="#Exercise03" class="btn btn-info" data-toggle="collapse">Exercise 3-Web Conferencing</a></div>
+
+        <div id="Exercise03" class="collapse in  col-lg-12">
+
+
+            <p>
+                Online communications,  collaboration and screen sharing<br />
+            </p>
+            <p>
+                The purpose of this exercise is to learn how to collaborate and share  your screen using Zoom.<br />
+
+
+                Login to your <a href="https://minnstate.zoom.us" class="bg-info text-white" target="_blank">MinnState Zoom account</a>.  
+                It was setup in Formative00.<br />
+                Review the information at &#39;<a href="https://learn.winona.edu/wiki/Zoom" class="bg-info text-white" target="_blank"> Zoom</a>&#39; in the WSU Knowledge Base.
+            </p>
+
+            <p>
+                Watch the LinkedIn Learning course &#39;<a href="https://www.linkedin.com/learning/learning-zoom/stay-connected-with-zoom-meetings" class="bg-info text-white" target="_blank">Learning Zoom</a>&#39; before completing this Exercise.<br />
+                <br />
+            </p>
+
+            <p>
+                Log into D2L and find your partner under Communication&gt;Groups&gt;Summative05 Partner<br />
+                Note that most groups have 2 people, there may be a group of 3.<br />
+                Decide which group member will host the meeting in their Personal Zoom meeting room.<br />
+                The host will email their Zoom meeting link to their partner(s).<br />
+                Explore the Zoom meeting interface.<br />
+                Make sure that the Participants and Chat windows are visible.<br />
+                Each group member will take turns sharing their screen.<br />
+                Each group member will open Flipster in their browser, login, and display the latest cover of a magazine (Discover, Wired, Time...)<br />
+                Each group member will Share their screen, displaying the Zoom room and magazine cover, and the other attendees will make a screen shot.<br />
+                The screen shot should be similar to this:
+            </p>
+
+            <p>
+                <img src="images/ZoomScreenShareFlipster.PNG" alt="Zoom screen share" class="img-responsive" /><br />
+            </p>
+
+            <hr />
+
+            <p>
+                (250) 5. Make a screen shot as described above and save it as 'Ex3' to the ' 
+                  <code><span id="aPath"></span></code>
+                <script>document.getElementById("aPath").innerHTML = Path; </script>
+                ' folder.<br />
+            </p>
+
+        </div>
+        <div class="col-lg-12 text-danger">
+            <h2>Screen Shot Ex3</h2>
+            <hr />
+        </div>
+
+
+
+
+        <div class="col-lg-12"><a href="#Exercise04" class="btn btn-info" data-toggle="collapse">Exercise 4-LinkedIn</a></div>
+
+
+        <div id="Exercise04" class="collapse in  col-lg-12">
+
+            <p>
+                Leverage your FaceBook skills to build your professional persona.<br />
+                Begin your career today.<br />
+                <br />
+                Sign up for a <a href="http://www.linkedin.com/" class="bg-info text-white" target="_blank">
+                    <img src="images/LinkedIn.png" alt="LinkedIn" class="img-responsive" /></a> account.
+                <br />
+            </p>
+
+            <p>
+                Connect with me if you would like: <a href="http://www.linkedin.com/in/patrickpaulson" class="bg-info text-white" target="_blank">
+                    <img src="images/In.jpg" class="img-responsive" alt="Link to Prof Paulson" /></a>
+            </p>
+            <hr />
+
+            <p>
+                6. (50) What is the value to your career of a tool like Linked In?<br />
+                Ref: Wikipedia info on <a href="http://en.wikipedia.org/wiki/Linkedin" class="bg-info text-white" target="_blank">LinkedIn</a>.
+                <br />
+
+			<!-- Enter your answer in the VALUE field below   GROK -->
+                <input type="text" name="q6" id="q6" size="120" maxlength="120" class="form-control" value="LinkedIn value:  " />
+            </p>
+            <hr />
+
+            <p>
+                (50) 7. Make a screen shot of your LinkedIn home page<br />
+                <!--  PgP 2/4/2018 create path using constants and current document assignment -->
+                Save the screen shot  as &quot;Ex4&quot; in your ' 
+                 <code><span id="bPath"></span></code>
+                <script>document.getElementById("bPath").innerHTML = Path; </script>
+                ' folder.<br />
+
+            </p>
+
+        </div>
+
+
+        <div class="col-lg-12 text-danger">
+            <h2>Screen Shot Ex4</h2>
+            <hr />
+        </div>
+
+
+
+        <!--  From here to end difference question numbers and Summative numbering for PDF of file uploaded to D2L    -->
+
+
+        <div class="col-lg-12"><a href="#ExercisePDF" class="btn btn-info" data-toggle="collapse">Exercise-PDF File Creation</a></div>
+
+        <div id="ExercisePDF" class="collapse in  col-lg-12">
+            <p>
+                Use a web browser to verify that you have published your website to https://classes.winona.edu/...
+                <br />
+                Check that your name, StarID, email, class, semester, section and all of your answers are correct and visible.
+                <br />
+                From the menu choose File&gt;Print... and using &quot;Print to PDF&quot; save a copy of this assignment as a .pdf file in your   ' 
+                <code><span id="cPath"></span></code>
+                <script>document.getElementById("cPath").innerHTML = Path; </script>
+                ' folder.<br />
+            </p>
+            <br />
+
+            <p>
+                (50) 8. Save your file 'WebPage.pdf' to the ' 
+                  <code><span id="dPath"></span></code>
+                <script>document.getElementById("dPath").innerHTML = Path; </script>
+                ' folder.<br />
+
+
+            </p>
+
+            <div class="text-danger">
+                <h2>WebPage.pdf</h2>
+                <hr />
+            </div>
+
+			<p>
+				Create a .pdf file named &#39;screenshots.pdf&#39; by combining the above screenshots.
+			</p>
+
+			<p>
+				Refer to <a href="../Formative00/Formative00.html" class="bg-info text-white" target="_blank"  >Formative00</a> and either:<br />
+				Method 1- use File Explorer to drag all screenshots into a blank Word document, and print the document as 
+				&#39;screenshots.pdf&#39;<br />
+				or <br />
+				Method 2- use File Explorer to select all screenshots, righ click and select 
+				&#39;Print&#39; and print the document as &#39;screenshots.pdf&#39;
+			</p>
+
+            <p>
+                (50) 9. Save your file 'ScreenShots.pdf' to the ' 
+                 <code><span id="fPath"></span></code>
+                <script>document.getElementById("fPath").innerHTML = Path; </script>
+                ' folder.<br />
+
+            </p>
+
+            <div class="text-danger">
+                <h2>ScreenShots.pdf</h2>
+                <hr />
+            </div>
+
+
+            <p>&nbsp;</p>
+            <p>
+                Use PDFill or PDF Preview(Mac) to merge the <strong>WebPage.pdf</strong> file with the <strong>ScreenShots.pdf </strong>file, and save it as &#39;<strong>Summative05.pdf</strong>&#39; in ' 
+                 <code><span id="gPath"></span></code>
+                <script>document.getElementById("gPath").innerHTML = Path; </script>
+                ' folder.<br />
+
+            </p>
+
+
+            <p>(50) 10. Upload your file 'Summative05.pdf' to the D2L 'Summative05' Assignment folder.</p>
+
+            <div class="text-danger">
+                <h2>Summative05.pdf</h2>
+            </div>
+            <hr />
+
+        </div>
+
+
+
+
+        <div class="col-lg-12"><a href="#ExerciseAssignmentSubmission" class="btn btn-info" data-toggle="collapse">Exercise-Assignment Submission</a></div>
+
+        <div id="ExerciseAssignmentSubmission" class="collapse in  col-lg-12">
+            <p>
+                Use a browser to view your completed and published website at: https://classes.winona.edu/...     
+                <br />
+                Ensure that you have linked this assignment on your home page.
+                Note that your screen shots do not have to be completed to perform this step.<br />
+            </p>
+
+            (50) 11. Home Page Hyperlink<br />
+            Check and verify that this assignment is hyperlinked on your home page.<br />
+            <br />
+
+            (50) 12. Assignment submission<br />
+            Press the Submit button at the top or bottom of this page.
+                Read and follow instructions on the confirmation page.&nbsp; Correct any errors.
+        </div>
+        <hr />
+
+
+
+
+        <div class="col-lg-12">
+            <br />
+            <input class="text-danger btn-block btn-lg" name="Submit" value="Submit" type="submit" />
+            <br />
+        </div>
+
+
+    </form>
+
+
+
+    <!-- Creative Commons License Info -->
+    <div id="xLicense" class=" col-lg-12 text-muted"></div>
+
+    <div id="xfooter" class=" col-lg-12 text-muted"></div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../../ReadOnly/jquery-1.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../../ReadOnly/bootstrap.js"></script>
+
+</body>
+</html>
