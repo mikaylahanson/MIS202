@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+
+<!-- 
+	PgP 7/5/2022 adding back form and report exercises 
+-->
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap -->
+	<link href="../../ReadOnly/bootstrap.css" rel="stylesheet">
+
+	<!-- constant file to update email, firstname, lastname, starid, section on students' pages -->
+	<script src="../constants.js"></script>
+	<script src="../../ReadOnly/CourseConstants.js"></script>
+
+	<!-- model assignment file, version 1 released 2018/02/18 PgP -->
+
+	<title>MIS202Summative07</title>
+</head>
+
+<body class="container-fluid" onload="setVariables()">
+
+	<form class="container-fluid" action="https://eprofessor.azurewebsites.net/code/ProcessFormData.asp" method="post" name="frmAssignment" id="frmAssignment">
+		<input name="InstID" id="InstID" value="00617282" type="hidden">
+
+		<h1 class=" text-center">Database Management Systems-Microsoft Access</h1>
+
+		<!-- -start-Student, class and assignment information. Assignment hard-coded, other values from constants.js file-start -->
+		<div class="row col-lg-12">
+			<div class="col-lg-3">
+				<label class="text-primary" for="FirstName">First Name:</label>
+				<input class="form-control" name="FirstName" id="FirstName" type="text" value="default first name" readonly="readonly">
+			</div>
+			<div class="col-lg-3">
+				<label class="text-primary" for="LastName">Last Name:</label>
+				<input class="form-control" name="LastName" id="LastName" type="text" value="default last name" readonly="readonly">
+			</div>
+			<div class="col-lg-3">
+				<label class="text-primary" for="pin">StarID:</label>
+				<input class="form-control" name="pin" id="pin" type="text" value="default StarID" readonly="readonly">
+			</div>
+			<div class="col-lg-3">
+				<label class="text-primary" for="email">Email:</label>
+				<input class="form-control" name="email" id="email" type="email" value="default email address" readonly="readonly">
+			</div>
+		</div>
+
+		<div class="row col-lg-12">
+			<div class="col-lg-3">
+				<label class="text-primary" for="semester">Semester:</label>
+				<input class="form-control" name="semester" id="semester" type="text" value="default" readonly="readonly">
+			</div>
+			<div class="col-lg-3">
+				<label class="text-primary" for="class">Class:</label>
+				<input class="form-control" name="class" id="class" value="xClass" type="text" readonly="readonly">
+			</div>
+			<div class="col-lg-3">
+				<label class="text-primary" for="section">Section:</label>
+				<input class="form-control" name="section" id="section" value="default" type="text" readonly="readonly">
+			</div>
+			<div class="col-lg-3">
+				<label class="text-primary" for="assignment">Assignment:</label>
+				<input class="form-control" name="assignment" id="assignment" value="Summative07" type="text" readonly="readonly">
+			</div>
+		</div>
+		<!-- -end-Student, class and assignment information-end -->
+
+		<!-- Calculate the correct path for saving the files -->
+		<script>Path = "&#92;OneDrive - MNSCU&#92;" + xClass + "&#92;" + document.getElementById("assignment").value + "&#92;"; </script>
+
+
+		<div class="col-lg-12">
+			<br />
+			<input class="text-danger btn-block btn-lg" name="Submit" value="Submit" type="submit">
+			<br />
+		</div>
+
+		<div class="col-lg-12 h3 text-danger">
+			750 Points
+           
+			<hr />
+		</div>
+
+
+
+		<!-- -start-objectives-start -->
+		<div class="col-lg-12"><a href="#Objectives" class="btn btn-info" data-toggle="collapse">Learning Objectives</a></div>
+		<div id="Objectives" class=" collapse in col-lg-12">
+
+			<!--Above this line similar except for Assignment number and title   -->
+
+
+			<p>After completing this assignment you will be able to <strong>use</strong> a database application to</p>
+			<ul>
+				<li>understand the difference between a flat file (.csv) and a set of tables for storing and retrieving data without duplication or inconsistency</li>
+				<li>complete an online lesson introducing you to the power of creating Queries in Access</li>
+				<li>create a table to store data on a particular topic</li>
+				<li>create queries to answer questions</li>
+				<li>create crosstab queries to summarize data</li>
+				<li>create a form to enter and modify data</li>
+				<li>create a report to display data in chart form</li>
+			</ul>
+			<p>The exercises in this assignment should be done in the order presented.</p>
+			<p>If you enjoy working with databases, look into MIS 342-Advanced Business Computer Applications,which goes into more detail on how databases can be used by businesses to make decisions.</p>
+            <p>Note-PgP 10/11/2022-had to add &#39;PtrSafe&#39; declaration to 32-bit functions in Access Northwind databases to prevent errors on 64-bit systems</p>
+			<hr />
+		</div>
+		<!-- -end-objectives-end -->
+
+		<div class="col-lg-12"><a href="#Overview" class="btn btn-info" data-toggle="collapse">Assignment Overview</a></div>
+
+		<div id="Overview" class="collapse in  col-lg-12">
+			<p>The purpose of this assignment is to learn why businesses and other entities use database software. Yes you can use a spreadsheet to make a list of customers and what they have ordered, but there are limits to that approach. When a customer has placed multiple orders, and you want to contact that customer, which record contains the correct contact information in the case where there are differing addresses or phone numbers? Some other thing to consider   are:</p>
+			<ul>
+				<li>How important is accurate data to your business?</li>
+				<li>What level of granularity do you need to consider-name or first name, last name?</li>
+				<li>Should you store employees hire date or seniority (in days)?</li>
+				<li>How often should you back up your data?</li>
+				<li>How many databases with  product information should you maintain?</li>
+				<li>What use is storing all this data to a business?</li>
+			</ul>
+			<p>This assignment will cover a variety of ways to use a database application to work with data. You are encouraged to explore on your own to find additional   features that will make your life and present or future jobs easier.</p>
+		</div>
+
+
+		<div class=" col-lg-12"><a href="#Exercise01" class="btn btn-info" data-toggle="collapse">Exercise 1-Flat-File Problems Appointment</a></div>
+
+		<div id="Exercise01" class="collapse in  col-lg-12">
+
+			<p>Open and examine this file: <a href="DataFiles/FlatFile_Sales.xlsx" class="bg-info text-white" target="_blank">FlatFile_Sales.xlsx</a></p>
+			<p>
+				Answer these questions:<br />
+			</p>
+			<p>
+				<strong>1. (50) Who is the contact person at the Company &quot;Toms Spezialit&auml;ten&quot; ? </strong>
+				<br />
+
+				<!-- Enter your answer in the VALUE field below   GROK -->
+				<input type="text" name="q1" id="q1" size="120" maxlength="120" class="form-control" value="contact person:  " />
+
+			</p>
+			<hr />
+			<p>
+				Open the file  <a href="DataFiles/Northwind_Sales.accdb" class="bg-info text-white" target="_blank">Northwind_Sales.accdb</a>.
+               
+				<br />
+				Go to the tab &quot;Database Tools&quot; and select &quot;Relationships&quot;.
+               
+				<br />
+				Explore the diagram that you see, which will look like the one below,  and examine this file:
+           
+			</p>
+			<p>
+				<img src="images/SalesRelationships.jpg" alt="relationships" class="img-responsive" />
+			</p>
+			<p>Open and examine the four tables- Products, Order Details, Orders and Customers. </p>
+			<p>
+				Closely examine the &quot;Customers&quot; table. Look up the record for the Company &quot;Toms Spezialit&auml;ten&quot;.
+               
+				<br />
+				<img src="images/CustomersTable.png" alt="relationships" class="img-responsive" />
+			</p>
+
+			<p>
+				<strong>2. (50) Explain briefly why the problem of who is the contact person for a specific company could not occur in a relational database:</strong><br />
+
+				<!-- Enter your answer in the VALUE field below   GROK -->
+				<input type="text" name="q2" id="q2" size="120" maxlength="120" class="form-control" value="could not occur in relational database because:  " />
+
+				<br />
+			</p>
+
+		</div>
+		<hr />
+
+		<div class=" col-lg-12"><a href="#Exercise02" class="btn btn-info" data-toggle="collapse">Exercise 2-Query with Constraints</a></div>
+
+		<div id="Exercise02" class="collapse in  col-lg-12">
+
+			<p>
+				For this assignment you must complete this Chapter 5 video '<a href="https://www.linkedin.com/learning/access-2019-essential-training/establishing-constraints-with-criteria" class="bg-info text-white" target="_blank">Establishing constraints with criteria'</a> which is 4m 37s.<br />
+				The database file &#39;<a href="DataFiles/LandonHotel-Criteria.accdb" class="bg-info text-white" target="_blank">LandonHotel-Critera.accdb</a>&#39; can be downloaded from LinkedIn Learning, and found in the OneDrive ReadOnly folder for this assignment.<br />
+			</p>
+			<p>
+				As you work through this question, when they deomonstrate how to show Customers in the United States, and how to select various states such as California, make and save a query that shows customers from 'Texas'<br />
+				<img src="images/QueryConstraints.PNG" class="img-responsive" alt="query with constraints" />
+			</p>
+			<p>Then answer the following question:</p>
+			<p>
+				<strong>3. (50) How many customers are located in Texas?</strong><br />
+
+				<!-- Enter your answer in the VALUE field below   GROK -->
+				<input type="text" name="q3" id="q3" class="form-control" value="Enter number in Texas" />
+				<br />
+			</p>
+			<hr />
+		</div>
+		<div class=" col-lg-12">
+
+			<p>
+				You are strongly encouraged to work through <a href="https://www.linkedin.com/learning/learning-access-for-office-365" class="bg-info text-white" target="_blank">Learn Access for Office 365</a>, it is well worth the time.
+               
+				<br>
+				There are other very useful videos on databases and SQL available from LinkedIn Learning
+           
+			</p>
+			<hr />
+
+			<!--  PgP 2/4/2018 create path using constants and current document assignment -->
+			Download and save a copy of the <a href="DataFiles/Northwind.accdb" class="bg-info text-white" target="_blank">Northwind.accdb</a> file to your ' 
+             
+			<code><span id="bPath"></span></code>
+			<script>document.getElementById("bPath").innerHTML = Path; </script>
+			' folder.<br />
+
+			<br />
+			<p>Open Northwind using Access and answer the following questions.  </p>
+			<hr />
+		</div>
+
+		<div class="col-lg-12"><a href="#Exercise03" class="btn btn-info" data-toggle="collapse">Exercise 3-Tables-Storing Data</a></div>
+
+		<div id="Exercise03" class="collapse in  col-lg-12">
+
+			<p>
+				<strong>(50)</strong>	4.  List the fields  in the Order Details table<br />
+
+				<!-- Enter your answer in the VALUE field below   GROK -->
+				<input type="text" name="q4" id="q4" size="120" maxlength="120" class="form-control" value="fields: " />
+			</p>
+			<hr />
+			<p>
+				In Access  create a new table that has the following settings.<br />
+				<br />
+				Table Name: tblInvoices
+           
+			</p>
+			<p>
+				Required Fields (set all fields Data Type to 'Text'):<br />
+				InvoiceID<br />
+				CustomerID<br />
+				Status<br />
+				InvoiceDate<br />
+				SalespersonName<br />
+				ShipDate
+               
+				<br />
+				ShipVia<br />
+				ShippingCost
+               
+				<br />
+				<br />
+				Add two records to the table, with data of your choosing.
+           
+			</p>
+
+
+			<p>
+				<strong>(50)</strong>  5. Use the Snipping Tool to make a screen shot of the table in datasheet view.
+               
+				<br />
+
+				<!--  PgP 2/4/2018 create path using constants and current document assignment -->
+				Save the screen shot  as &quot;Ex3&quot; in your ' 
+                
+				<code><span id="cPath"></span></code>
+				<script>document.getElementById("cPath").innerHTML = Path </script>
+				' folder.<br />
+
+				You will be combining screen shots from several exercises at the end of this assignment, just as you did in 
+                 
+				<a href="https://eprofessor.azurewebsites.net/Formative00/Formative00.html#PDFfileCreation" class="bg-info text-white" target="_blank">Formative00</a>-PDF File Creation. 
+           
+			</p>
+
+		</div>
+
+		<div class="col-lg-12 text-danger">
+			<h2>Screen Shot Ex3</h2>
+			<hr />
+		</div>
+
+
+
+		<div class="col-lg-12"><a href="#Exercise04" class="btn btn-info" data-toggle="collapse">Exercise 4-Queries-asking Questions</a></div>
+
+
+		<div id="Exercise04" class="collapse in  col-lg-12">
+			<p>
+				Create a query that answers the following question.<br />
+				What are the company names, in ascending alphabetical order, that have placed orders?
+           
+			</p>
+
+			<p>
+				<strong>(50)</strong>  6. Use the Snipping Tool to make a screen shot sowing the first 10 company names.
+               
+				<br />
+
+				<!--  PgP 2/4/2018 create path using constants and current document assignment -->
+				Save the screen shot  as &quot;Ex4&quot; in your ' 
+                 
+				<code><span id="dPath"></span></code>
+				<script>document.getElementById("dPath").innerHTML = Path </script>
+				' folder.<br />
+
+				You will be combining screen shots from several exercises at the end of this assignment, just as you did in 
+                 
+				<a href="https://eprofessor.azurewebsites.net/Formative00/Formative00.html#PDFfileCreation" class="bg-info text-white" target="_blank">Formative00</a>-PDF File Creation. 
+           
+			</p>
+
+		</div>
+
+		<div class="col-lg-12 text-danger">
+			<h2>Screen Shot Ex4</h2>
+			<hr />
+		</div>
+
+		<div class=" col-lg-12">
+			<p>
+				Create a crosstab query based on the 'Sales by Category' query<br />
+				Feel free to use the crosstab query wizard.<br />
+				Use the following settings:<br />
+				Row Heading: Category Name
+               
+				<br />
+				Column Heading: ProductName<br />
+				Column and Row Intersection: Sum(ProductSales)
+           
+			</p>
+			<p>
+				<strong>Answer this question:<br />
+					<strong>(50)</strong> 7. What is the Total of ProductSales for the Category 'Dairy Products'?</strong><br />
+
+
+				<!-- Enter your answer in the VALUE field below   GROK -->
+				<input type="text" name="q7" id="q7" size="120" maxlength="120" class="form-control" value="Total Product Sales for Dairy Products:  " />
+				<br />
+			</p>
+		</div>
+		<hr />
+
+
+
+		<div class="col-lg-12"><a href="#Exercise05" class="btn btn-info" data-toggle="collapse">Exercise 5-Forms-Working with Data</a></div>
+
+		<div id="Exercise05" class="collapse in  col-lg-12">
+
+			<p>FORMS-ONSCREEN AND INTERACTIVE </p>
+			<p>
+				Create a data entry form for the suppliers.<br />
+				The layout is to be columnar.<br />
+				Apply whatever 
+    Autoformat you want.<br />
+				Display the Suppliers form to Form View.<br />
+
+
+
+				<p>
+					<strong>(50)</strong> 8. Use the Snipping Tool to make a screen shot of any record.
+                   
+					<br />
+
+					<!--  PgP 2/4/2018 create path using constants and current document assignment -->
+					Save the screen shot  as &quot;Ex5&quot; in your ' 
+                 
+					<code><span id="ePath"></span></code>
+					<script>document.getElementById("ePath").innerHTML = Path </script>
+					' folder.<br />
+
+					You will be combining screen shots from several exercises at the end of this assignment, just as you did in 
+                 
+					<a href="https://eprofessor.azurewebsites.net/Formative00/Formative00.html#PDFfileCreation" class="bg-info text-white" target="_blank">Formative00</a>-PDF File Creation. 
+               
+				</p>
+		</div>
+
+		<div class="col-lg-12 text-danger">
+			<h2>Screen Shot Ex5</h2>
+			<hr />
+		</div>
+
+
+
+
+		<div class="col-lg-12">
+			<a href="#Exercise06" class="btn btn-info" data-toggle="collapse">Exercise 6-Reports-Formatted Output</a>
+		</div>
+
+		<div id="Exercise06" class="collapse in  col-lg-12">
+			<p>
+				Create a new blank report.<br />				
+				Add a chart based on the query 'Category Sales for 1997'&nbsp;          
+			</p>
+			<p>
+				Go to Design View<br />
+				In the menu choose 'Report Design' and make sure under 'Controls' that 'Use Control Wizards' is selected.<br />
+				Under 'Page Setup > Page Setup' make sure that all margins are .25 inches and on the 'Page' tab the Orientation is 'Portrait'.<br />
+				Drag the right edge of the detail section to make it 10.5 inches wide.<br />
+				<br />
+				Under 'Report Design > Controls' choose the Chart Control icon-once selected the background is pink.<br />
+				<img src="images/ChartControl.png" class="img-responsive" alt="chart control" />
+				Move the cursor to the Detail section-the cursor changes to a '+' crosshairs.<br />
+				Click and drag the cursor to fill the entire Detail section with the chart.<br />
+				The Chart Wizard begins.<br />
+				Make sure to choose the 'Category Sales for 1997' to create the chart.<br />
+				Add both fields to the chart.<br />
+				Select 3-D column for the chart type.<br />
+				Accept the default data layout.<br />
+				Accept the default chart title, but do NOT display a legend.<br />
+				</p>
+
+				<p>Now for the tricky part-working in the chart applet design view.<br />
+					Double-click the chart control, the screen flashes and the title bar changes, you are now in the 'Microsoft Graph' application.<br />
+
+					Click to select the chart, in the tool bar, at the left end a drop-down list appears.<br />
+					Select 'Category Axis', then select the icon to the right-'Format Axis' and a dialog box appears:<br />
+<img src="images/MicrosoftGraphDesign.png" class="img-responsive" alt="Microsoft Graph design view" /><br />
+					<br />
+
+					On the 'Alignment' tab set the text orientation to about 75 degrees.<br />
+					click somewhere besides the Microsoft Graph to go back into the Access Report Design View.<br />
+					Go to 'Report View' and you should have a Report with an embedded chart.<br />
+
+				</p>
+			<p>
+
+				
+				Note that it may take a lot of work to make the chart  look like the one below-make your best effort.
+           
+			</p>
+
+			<p>
+				<strong>(100)</strong> 9. Use the Snipping Tool to make a screen shot of the report in Report View.
+               
+				<br />
+				Your report should look something like this:<br />
+				<img src="images/ChartInReport.png" class="img-responsive" alt="report with chart" />
+			</p>
+
+
+
+			<!--  PgP 2/4/2018 create path using constants and current document assignment -->
+			Save the screen shot  as &quot;Ex6&quot; in your ' 
+                
+			<code><span id="fPath"></span></code>
+			<script>document.getElementById("fPath").innerHTML = Path </script>
+			' folder.<br />
+
+
+			You will be combining screen shots from several exercises at the end of this assignment, just as you did in 
+                 
+			<a href="https://eprofessor.azurewebsites.net/Formative00/Formative00.html#PDFfileCreation" class="bg-info text-white" target="_blank">Formative00</a>-PDF File Creation. 
+              
+       
+		</div>
+
+		<div class="col-lg-12 text-danger">
+			<h2>Screen Shot Ex6</h2>
+			<hr />
+		</div>
+
+
+
+		<!--  From here to end difference question numbers and Summative numbering for PDF of file uploaded to D2L    -->
+
+
+		<div class="col-lg-12"><a href="#ExercisePDF" class="btn btn-info" data-toggle="collapse">Exercise-PDF File Creation</a></div>
+
+		<div id="ExercisePDF" class="collapse in  col-lg-12">
+			<p>
+				Use a web browser to verify that you have published your website to https://classes.winona.edu/...
+               
+				<br />
+				Check that your name, StarID, email, class, semester, section and all of your answers are correct and visible.
+               
+				<br />
+				From the menu choose File&gt;Print... and using &quot;Microsoft Print to PDF&quot; save a copy of this assignment as a .pdf file in your   ' 
+                
+				<code><span id="hPath"></span></code>
+				<script>document.getElementById("hPath").innerHTML = Path; </script>
+				' folder.<br />
+			</p>
+			<br />
+
+			<p>
+				<strong>(50)</strong> 10. Save your file 'WebPage.pdf' to the ' 
+               
+				<code><span id="iPath"></span></code>
+				<script>document.getElementById("iPath").innerHTML = Path; </script>
+				' folder.<br />
+
+
+			</p>
+
+			<div class="text-danger">
+				<h2>WebPage.pdf</h2>
+				<hr />
+			</div>
+
+			<p>
+				Create a .pdf file named &#39;screenshots.pdf&#39; by combining the above screenshots.
+			</p>
+
+			<p>
+				Refer to <a href="../Formative00/Formative00.html" class="bg-info text-white" target="_blank"  >Formative00</a> and either:<br />
+				Method 1- use File Explorer to drag all screenshots into a blank Word document, and print the document as 
+				&#39;screenshots.pdf&#39;<br />
+				or <br />
+				Method 2- use File Explorer to select all screenshots, righ click and select 
+				&#39;Print&#39; and print the document as &#39;screenshots.pdf&#39;
+			</p>
+
+
+			<p>
+				<strong>(50)</strong> 11. Save your file 'ScreenShots.pdf' to the ' 
+                 
+				<code><span id="kPath"></span></code>
+				<script>document.getElementById("kPath").innerHTML = Path; </script>
+				' folder.<br />
+
+			</p>
+
+			<div class="text-danger">
+				<h2>ScreenShots.pdf</h2>
+				<hr />
+			</div>
+
+
+			<p>&nbsp;</p>
+			<p>
+				Use PDFill to merge the <strong>WebPage.pdf</strong> file with the <strong>ScreenShots.pdf </strong>file, and save it as &#39;<strong>Summative07.pdf</strong>&#39; in ' 
+                
+				<code><span id="lPath"></span></code>
+				<script>document.getElementById("lPath").innerHTML = Path; </script>
+				' folder.<br />
+
+			</p>
+
+
+			<p><strong>(50)</strong> 12. Upload your file 'Summative07.pdf' to the D2L 'Summative07' Assignment folder.</p>
+
+			<div class="text-danger">
+				<h2>Summative07.pdf</h2>
+			</div>
+			<hr />
+
+		</div>
+
+
+
+
+		<div class="col-lg-12"><a href="#ExerciseAssignmentSubmission" class="btn btn-info" data-toggle="collapse">Exercise-Assignment Submission</a></div>
+
+		<div id="ExerciseAssignmentSubmission" class="collapse in  col-lg-12">
+			<p>
+				Use a browser to view your completed and published website at: https://classes.winona.edu/...     
+               
+				<br />
+				Ensure that you have linked this assignment on your home page.
+                Note that your screen shots do not have to be completed to perform this step.<br>
+			</p>
+
+			<strong>(50)</strong> 13. Home Page Hyperlink<br />
+			Check and verify that this assignment is hyperlinked on your home page.<br />
+			<br />
+
+			<strong>(50)</strong> 14. Assignment submission<br />
+			Press the Submit button at the top or bottom of this page.
+                Read and follow instructions on the confirmation page.&nbsp; Correct any errors.
+       
+		</div>
+		<hr />
+
+
+
+		<div class="col-lg-12">
+			<br />
+			<input class="text-danger btn-block btn-lg" name="Submit" value="Submit" type="submit">
+			<br />
+		</div>
+
+
+	</form>
+
+
+	<!-- Creative Commons License Info -->
+	<div id="xLicense" class=" col-lg-12 text-muted"></div>
+
+	<div id="xfooter" class=" col-lg-12 text-muted"></div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="../../ReadOnly/jquery-1.js"></script>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="../../ReadOnly/bootstrap.js"></script>
+
+</body>
+</html>
