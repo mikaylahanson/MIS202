@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+
+<!-- 
+	PgP 3/2/2020 updating MIS202 files to align with other assignments 
+-->
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap -->
+	<link href="../../ReadOnly/bootstrap.css" rel="stylesheet">
+
+	<!-- constant file to update email, firstname, lastname, starid, section on students' pages -->
+	<script src="../constants.js"></script>
+	<script src="../../ReadOnly/CourseConstants.js"></script>
+
+	<!-- model assignment file, version 1 released 2018/02/18 PgP -->
+
+	<title>MIS202 Summative11</title>
+</head>
+
+
+
+<body class="container-fluid" onload="setVariables()">
+
+	<form class="container-fluid" action="https://eprofessor.azurewebsites.net/code/ProcessFormData.asp" method="post" name="frmAssignment" id="frmAssignment">
+		<input name="InstID" id="InstID" value="00617282" type="hidden" />
+
+		<h1 class=" text-center">Programming Fundamentals</h1>
+
+		<!-- -start-Student, class and assignment information. Assignment hard-coded, other values from constants.js file-start -->
+		<div class="row col-lg-12">
+			<div class="col-lg-3">
+				<label class="text-primary" for="FirstName">First Name:</label>
+				<input class="form-control" name="FirstName" id="FirstName" type="text" value="default first name" readonly="readonly" />
+			</div>
+			<div class="col-lg-3">
+				<label class="text-primary" for="LastName">Last Name:</label>
+				<input class="form-control" name="LastName" id="LastName" type="text" value="default last name" readonly="readonly" />
+			</div>
+			<div class="col-lg-3">
+				<label class="text-primary" for="pin">StarID:</label>
+				<input class="form-control" name="pin" id="pin" type="text" value="default StarID" readonly="readonly" />
+			</div>
+			<div class="col-lg-3">
+				<label class="text-primary" for="email">Email:</label>
+				<input class="form-control" name="email" id="email" type="email" value="default email address" readonly="readonly" />
+			</div>
+		</div>
+
+		<div class="row col-lg-12">
+			<div class="col-lg-3">
+				<label class="text-primary" for="semester">Semester:</label>
+				<input class="form-control" name="semester" id="semester" type="text" value="default" readonly="readonly" />
+			</div>
+			<div class="col-lg-3">
+				<label class="text-primary" for="class">Class:</label>
+				<input class="form-control" name="class" id="class" value="xClass" type="text" readonly="readonly" />
+			</div>
+			<div class="col-lg-3">
+				<label class="text-primary" for="section">Section:</label>
+				<input class="form-control" name="section" id="section" value="default" type="text" readonly="readonly">
+			</div>
+			<div class="col-lg-3">
+				<label class="text-primary" for="assignment">Assignment:</label>
+				<input class="form-control" name="assignment" id="assignment" value="Summative11" type="text" readonly="readonly">
+			</div>
+		</div>
+		<!-- -end-Student, class and assignment information-end -->
+
+		<!-- Calculate the correct path for saving the files -->
+		<script>Path = "&#92;OneDrive - MNSCU&#92;" + xClass + "&#92;" + document.getElementById("assignment").value + "&#92;"; </script>
+
+
+		<div class="col-lg-12">
+			<br />
+			<input class="text-danger btn-block btn-lg" name="Submit" value="Submit" type="submit" />
+			<br />
+		</div>
+
+		<div class="col-lg-12 h3 text-danger">
+			850 Points
+            <hr />
+		</div>
+
+		<!-- -start-objectives-start -->
+		<div class="col-lg-12"><a href="#Objectives" class="btn btn-info" data-toggle="collapse">Learning Objectives</a></div>
+		<div id="Objectives" class=" collapse in col-lg-12">
+
+			<!--Above this line similar except for Assignment number and title   -->
+
+			<p>After completing this assignment you will be able to use a computer to</p>
+			<ul>
+				<li>create and edit a simple macro that records keystrokes</li>
+				<li>learn to use the command line to evaluate code</li>
+				<li>create a simple interpretted language program</li>
+				<li>create a simple visual interface</li>
+				<li>write code that responds to events</li>
+				<li>create an application for a mobile device</li>
+			</ul>
+
+			<hr />
+		</div>
+
+		<div class="col-lg-12"><a href="#Overview" class="btn btn-info" data-toggle="collapse">Assignment Overview</a></div>
+
+		<div id="Overview" class="collapse in  col-lg-12">
+
+			<p>
+				The purpose of this assignment is to learn the basic concepts of programming. For this task we will use 
+  a version of Visual Basic, known as Visual Basic for Applications, a component of most office applications. We will use VBA for Excel-also known as &quot;Macros&quot;. In addition we will develop an application for an Android phone-and run it on an emulator. If you have an Android device you could install it on that. Familiarity with programming is a valuable skill-it allows you to understand what programmers do, and enables you to communicate better with them. Some additional considerations  are:
+			</p>
+			<ul>
+				<li>Using programming to quickly mock up a visual interface</li>
+				<li>Understand the terminology used in coding a program</li>
+				<li>Learn the value of being able to create applications quickly for various devices</li>
+			</ul>
+			<p>
+				This assignment will cover three programming methods.
+				<br />
+				Knowledge of programming is a key to automating tasks that can increase your productivity, efficiency and save you time.
+			</p>
+			<hr />
+
+		</div>
+
+		<div class=" col-lg-12"><a href="#Exercise01" class="btn btn-info" data-toggle="collapse">Exercise 1-Macros</a></div>
+
+		<div id="Exercise01" class="collapse in  col-lg-12">
+
+
+
+			<p>
+				Background info on Macros-Windows:- <a href="https://www.linkedin.com/learning/excel-macros-and-vba-for-beginners/">https://www.linkedin.com/learning/excel-macros-and-vba-for-beginners/</a>&nbsp;<br />
+				Mac Excel Macros:  
+			<a href="https://www.linkedin.com/learning/excel-for-mac-2016-macros/">https://www.linkedin.com/learning/excel-for-mac-2016-macros/</a>
+			</p>
+			<p>
+				Enable Macros in Windows!<br />
+				From the menu choose File&gt;Options&gt;Customize Ribbon&gt; ...in the right colum check &quot;Developer&quot;<br />
+				<img src="images/EnableMacros.png" class="img-fluid img-responsive img-rounded" alt="Excel options" />
+			</p>
+			<hr />
+			<p>
+				Record a macro that adds your name to the Header or Footer of the current Excel Worksheet.<br />
+				Make sure to specify an appropriate font, and least 18 point, and have the text centered on the  page.<br />
+				<br />
+				When done recording, press Alt+F11 and open the VBA IDE (Visual Basic for Applications Integrated Development Environment.<br />
+
+				<p>
+					<strong>(50)</strong> 1. Why is  so much code needed to add a header or footer to a worksheet?<br />
+
+					<!-- Enter your answer in the VALUE field below   GROK -->
+					<input type="text" name="q1" id="q1" size="120" maxlength="120" class="form-control" value="why so much code?: " />
+				</p>
+
+			<hr />
+			<p>
+				Create a macro that will return the Square Root of a number in the cell currently selected.<br />
+				If you get a run time error &quot;type mismatch&quot; you probably had text in the selected cell.<br />
+				<br />
+				Hints:
+			</p>
+			<ul>
+				<li>this can be done with one line of code.</li>
+				<li>first create a macro that selects a cell, review the code.</li>
+				<li>remember you can calculate a square root by raising a number to a power<br />
+				</li>
+			</ul>
+
+			<p>
+				<strong>(100)</strong> 2. When done copy and paste the major line of code below. Do not worry if it  does not all fit in the text box.<br />
+
+				<!-- Enter your answer in the VALUE field below   GROK -->
+				<input type="text" name="q2" id="q2" size="120" maxlength="120" class="form-control" value="square root code: " />
+			</p>
+
+			<hr />
+
+
+
+			<p>
+				<strong>(100)</strong> 3. After creating the Square Root macro, display the VBA IDE (remember Alt+F11).  Make a screen shot of your IDE displaying the code and immediate windows.<br />
+				<!--  PgP 2/4/2018 create path using constants and current document assignment -->
+				Save the screen shot  as &quot;Ex1&quot; in your ' 
+                 <code><span id="cPath"></span></code>
+				<script>document.getElementById("cPath").innerHTML = Path; </script>
+				' folder.<br />
+
+			</p>
+
+
+		</div>
+
+		<div class="col-lg-12 text-danger">
+			<h2>Screen Shot Ex1</h2>
+			<hr />
+		</div>
+
+
+
+
+		<div class=" col-lg-12"><a href="#Exercise02" class="btn btn-info" data-toggle="collapse">Exercise 2-VBA IDE</a></div>
+
+		<div id="Exercise02" class="collapse in  col-lg-12">
+
+			<p>
+				Learn to use the VBA IDE Immediate Window to evaluate code and functions quickly.<br />
+				Open the Excel VBA IDE (Alt+F11), type in the following code, and press enter to evaluate the expression.
+			</p>
+			<br />
+			<p><code>? 3.9*7.6/5.6+1.89</code></p>
+
+			<strong>(50)</strong> 4. Copy the resulting value into the text box below. 
+            <br>
+
+
+			<!-- Enter your answer in the VALUE field below   GROK -->
+			<input name="q4" id="q4" size="120" maxlength="120" class="form-control" value="Expression value: " type="text" />
+			<br />
+			<hr />
+		</div>
+
+		<hr />
+		<hr />
+
+
+
+
+		<div class="col-lg-12"><a href="#Exercise03" class="btn btn-info" data-toggle="collapse">Exercise 3-Python Programming</a></div>
+
+		<div id="Exercise03" class="collapse in  col-lg-12">
+
+
+			<p>ref: <a href="https://www.linkedin.com/learning/python-for-non-programmers" class="bg-info text-white" target="_blank">Python for non-Programmers</a> at LinkedIn Learning</p>
+
+            <p>
+                This assignment illustrates the value of Python programming.<br />
+                In Project04-IoT13-Python is used to connect to sensors and actuators.<br />
+                Python can be used to write the data to the screen, to speak the results, to record this data locally, or to send it to the cloud.<br />
+				<strong>Note-in the following exercise you must create a new project or application, do not create a Python application as part of a website.</strong>
+            </p>
+
+
+			<ol>
+
+				<li>Download the file 
+               &quot;<a href="Python/Python3Programs.txt" class="bg-info text-white" target="_blank">Python3Programs.txt</a>&quot; and save it 
+
+					  in your ' 
+                 <code><span id="cxPath"></span></code>
+					<script>document.getElementById("cxPath").innerHTML = Path; </script>
+					' folder.<br />
+
+				</li>
+
+				<li>Open either Visual Studio Enterprise or Visual Studio Code (shown below) and choose File&gt;Open Folder... to bring up '
+					<code><span id="cyPath"></span></code>
+					<script>document.getElementById("cyPath").innerHTML = Path; </script>
+				</li>
+
+				<li>From the menu choose File&gt;New File...       and create a new text file named PySum11.py    
+                    <br />
+					<img src="Python/PySum11.PNG" class="img-fluid img-responsive img-rounded" alt="new python project" />
+					<br />
+				</li>
+
+				<li>When asked whether to install the recommended Python extensions choose &#39;Install&#39;
+					<br />
+					<img src="Python/PyExt.PNG" class="img-fluid img-responsive img-rounded" alt="python extensions" />
+					<br />
+				</li>
+
+				<li>Open this text file, find a program of interest, copy it and paste it into the PySum11.py file.
+           <br />
+					<img src="Python/SamplePrograms.PNG" class="img-fluid img-responsive img-rounded" alt=" python sample programs" />
+					<br />
+
+				</li>
+
+				<li>Run the program by clicking the triangle in the upper right corner.
+					<br />
+
+					<img src="Python/PastePyCode.PNG" class="img-fluid img-responsive img-rounded" alt=" pasted python code" />
+					<br />
+				</li>
+
+				<li>Try this with several of the available programs, creating a new Python file with an appropriate name each time.</li>
+
+				<li>Make a screen shot showing one of the Python programs running, with the VSIDE in the background.<br />
+					It will look something like this, minus the blue stripes:
+                <img src="Python/PythonExec.PNG" class="img-fluid img-responsive img-rounded" alt="running python" />
+					<br />
+					<br />
+				</li>
+
+			</ol>
+
+			<p>
+				Note: this exercise just scratches the surface of what you can do with Python.<br />
+				Python combined with IoT devices, and data analysis, is creating lots of opportunities and disruptions in our world.
+			</p>
+
+
+			<strong>(150)</strong> 5. Make a screen shot  of your running Python Program with the VS Code IDE visible in the background,
+			<br />
+			and save it as &quot;Ex3&quot; in your ' 
+            <code><span id="dPath"></span></code>
+			<script>document.getElementById("dPath").innerHTML = Path; </script>
+			' folder.<br />
+
+			<br />
+
+		</div>
+
+
+		<div class="col-lg-12 text-danger">
+			<h2>Screen Shot Ex3</h2>
+			<hr />
+		</div>
+
+
+
+		<br />
+
+
+		<div class="col-lg-12"><a href="#Exercise04" class="btn btn-info" data-toggle="collapse">Exercise 4-Mobile Application Development</a></div>
+
+
+		<div id="Exercise04" class="collapse in  col-lg-12">
+
+			<p>Android AppInventor</p>
+			<p>&nbsp;</p>
+			<p>
+				LinkedIn Learning <a href="https://www.linkedin.com/learning/teaching-future-ready-students/design-an-app-with-android-app-inventor?u=41915348" target="_blank">AppInventor</a><br />
+
+				<img src="images/AI_LIL.PNG" class="img-fluid img-responsive img-rounded" alt="App Inventor at LinkedIn Learning" />
+			</p>
+			<p>Android apps- <a href="http://ai2.appinventor.mit.edu/" target="_blank">AppInventor website</a></p>
+			<p>Background at Wikipedia:   <a href="https://en.wikipedia.org/wiki/Google_App_Inventor">http://en.wikipedia.org/wiki/Google_App_Inventor</a></p>
+			<p>You will use <a href="http://ai2.appinventor.mit.edu/">Google's AppInventor</a> to create an application for a mobile Android device.</p>
+			<p>
+				For an App Inventor overview, read this material:
+  <a href="https://appinventor.mit.edu/explore/get-started.html">http://appinventor.mit.edu/explore/get-started.html</a><br />
+				<a href="https://appinventor.mit.edu/explore/get-started.htmlhttp://appinventor.mit.edu/explore/get-started.html">
+					<br />
+				</a>i.  First download and install
+  <a href="http://appinventor.mit.edu/explore/ai2/windows.html">App Inventor 2</a>&nbsp;&nbsp; Note: you do not have to install the application on your phone, use the emulator. Read the instructions carefully, you may need to update Java on your laptop. Make sure to run AIStarter, connect to the emulator via the menu by choosing Connect&gt;Emulator, and then do the required updating before proceeding to the next step!
+			</p>
+			<p>
+				ii. Follow<a href="http://appinventor.mit.edu/explore/ai2/hellopurr.html"> these instructions</a> to build your mobile application, Hello Purr. 
+  You first design the visual interface, then you program the behavior.
+			</p>
+			<p>
+				<strong>Make  screen shots of your completed application in the &quot;AppInventor&quot; IDE (Integrated Development Environment), and emulator.<br />
+					Make sure to include the 'Non Visible Components'-you may have to scroll down.
+				</strong>
+			</p>
+			<p>
+				Optional:&nbsp; Additonal tutorials:&nbsp;
+	<a href="http://appinventor.mit.edu/explore/ai2/tutorials.html">http://appinventor.mit.edu/explore/ai2/tutorials.html</a>
+			</p>
+			<p>
+				Do the Course:&nbsp;
+	<a href="http://www.appinventor.org/course-in-a-box_teaching">http://www.appinventor.org/course-in-a-box_teaching</a>
+			</p>
+
+			<p>The emulator looks something like this when running:</p>
+			<p>
+				<img src="images/PetKittyEmulator.png" class="img-fluid img-responsive img-rounded" alt="running emulator" />
+			</p>
+			<p>Notes:</p>
+			<p>Troubleshooting: see this url: <a href="http://appinventor.mit.edu/explore/ai2/connect-help-emulator.html">http://appinventor.mit.edu/explore/ai2/connect-help-emulator.html</a> </p>
+			<p>
+				The AppInventor program and emulator may be problematic.<br />
+				You may need to reboot your computer.<br />
+				You may encounter several different error messages.<br />
+				This is a great opportunity to hone your troubleshooting skills:
+			</p>
+			<p>
+				<img src="images/AI_emulatorCrash.png" class="img-fluid img-responsive img-rounded" alt="crash" />
+			</p>
+			<br />
+			<p>
+				<img src="images/aiStarter_notRunning.png" class="img-fluid img-responsive img-rounded" alt="aiStarter error" />
+			</p>
+			<hr />
+
+
+
+			<p>
+				<strong>(50)</strong> 6. Make a screen shot showing the IDE in Design View.<br />
+				<!--  PgP 2/4/2018 create path using constants and current document assignment -->
+				Save the screen shot  as &quot;Ex4-1&quot; in your ' 
+                <code><span id="ePath"></span></code>
+				<script>document.getElementById("ePath").innerHTML = Path; </script>
+				' folder.<br />
+			</p>
+		</div>
+
+
+		<div class="col-lg-12 text-danger">
+			<h2>Screen Shot Ex4-1</h2>
+			<hr />
+		</div>
+
+		<div class="col-lg-12">
+
+			<p>
+				<strong>(50)</strong> 7. Make a screen shot showing the IDE in Blocks View.<br />
+				<!--  PgP 2/4/2018 create path using constants and current document assignment -->
+				Save the screen shot  as &quot;Ex4-2&quot; in your ' 
+                <code><span id="fPath"></span></code>
+				<script>document.getElementById("fPath").innerHTML = Path; </script>
+				' folder.<br />
+			</p>
+
+		</div>
+
+
+		<div class="col-lg-12 text-danger">
+			<h2>Screen Shot Ex4-2</h2>
+			<hr />
+		</div>
+
+		<div class="col-lg-12">
+			<p>
+				<strong>(100)</strong> 8. Make a screen shot showing the running Emulator with the Hello Kitty app running.<br />
+				<!--  PgP 2/4/2018 create path using constants and current document assignment -->
+				Save the screen shot  as &quot;Ex4-3&quot; in your ' 
+                <code><span id="gPath"></span></code>
+				<script>document.getElementById("gPath").innerHTML = Path; </script>
+				' folder.<br />
+			</p>
+
+		</div>
+
+		<div class="col-lg-12 text-danger">
+			<h2>Screen Shot Ex4-3</h2>
+			<hr />
+		</div>
+
+
+
+
+		<!--  From here to end difference question numbers and Summative numbering for PDF of file uploaded to D2L    -->
+
+
+		<div class="col-lg-12"><a href="#ExercisePDF" class="btn btn-info" data-toggle="collapse">Exercise-PDF File Creation</a></div>
+
+		<div id="ExercisePDF" class="collapse in  col-lg-12">
+			<p>
+				Use a web browser to verify that you have published your website to https://classes.winona.edu/...
+                <br />
+				Check that your name, StarID, email, class, semester, section and all of your answers are correct and visible.
+                <br />
+				From the menu choose File&gt;Print... and using &quot;Microsoft Print to PDF&quot; save a copy of this assignment as a .pdf file in your   ' 
+                <code><span id="aaPath"></span></code>
+				<script>document.getElementById("aaPath").innerHTML = Path; </script>
+				' folder.<br />
+			</p>
+			<br />
+
+			<p>
+				<strong>(50)</strong> 9. Save your file 'WebPage.pdf' to the ' 
+                <code><span id="bbPath"></span></code>
+				<script>document.getElementById("bbPath").innerHTML = Path; </script>
+				' folder.<br />
+
+
+			</p>
+
+			<div class="text-danger">
+				<h2>WebPage.pdf</h2>
+				<hr />
+			</div>
+
+			<p>
+				Create a .pdf file named &#39;screenshots.pdf&#39; by combining the above screenshots.
+			</p>
+
+			<p>
+				Refer to <a href="../Formative00/Formative00.html" class="bg-info text-white" target="_blank"  >Formative00</a> and either:<br />
+				Method 1- use File Explorer to drag all screenshots into a blank Word document, and print the document as 
+				&#39;screenshots.pdf&#39;<br />
+				or <br />
+				Method 2- use File Explorer to select all screenshots, righ click and select 
+				&#39;Print&#39; and print the document as &#39;screenshots.pdf&#39;
+			</p>
+
+
+			<p>
+				<strong>(50)</strong> 10. Save your file 'ScreenShots.pdf' to the ' 
+                <code><span id="ddPath"></span></code>
+				<script>document.getElementById("ddPath").innerHTML = Path; </script>
+				' folder.<br />
+
+			</p>
+
+			<div class="text-danger">
+				<h2>ScreenShots.pdf</h2>
+				<hr />
+			</div>
+
+
+			<p>&nbsp;</p>
+			<p>
+				Use PDFill to merge the WebPage.pdf file with the ScreenShots.pdf file, and save it as &#39;Summative11.pdf&#39; in ' 
+                <code><span id="eePath"></span></code>
+				<script>document.getElementById("eePath").innerHTML = Path; </script>
+				' folder.<br />
+
+			</p>
+
+
+			<p><strong>(50)</strong> 11. Upload your file 'Summative11.pdf' to the D2L 'Summative11' Assignment folder.</p>
+
+			<div class="text-danger">
+				<h2>Summative11.pdf</h2>
+			</div>
+			<hr />
+
+		</div>
+
+
+
+
+		<div class="col-lg-12"><a href="#ExerciseAssignmentSubmission" class="btn btn-info" data-toggle="collapse">Exercise-Assignment Submission</a></div>
+
+		<div id="ExerciseAssignmentSubmission" class="collapse in  col-lg-12">
+			<p>
+				Use a browser to view your completed and published website at: https://classes.winona.edu/...     
+                <br />
+				Ensure that you have linked this assignment on your home page.
+                Note that your screen shots do not have to be completed to perform this step.<br>
+			</p>
+
+			<strong>(50)</strong> 12. Home Page Hyperlink<br />
+			Check and verify that this assignment is hyperlinked on your home page.<br />
+			<br />
+
+			<strong>(50)</strong> 13. Assignment submission<br />
+			Press the Submit button at the top or bottom of this page.
+                Read and follow instructions on the confirmation page.&nbsp; Correct any errors.
+        <hr />
+
+		</div>
+
+
+
+		<div class="col-lg-12">
+			<br />
+			<input class="text-danger btn-block btn-lg" name="Submit" value="Submit" type="submit" />
+			<br />
+		</div>
+
+
+	</form>
+
+
+
+	<!-- Creative Commons License Info -->
+	<div id="xLicense" class=" col-lg-12 text-muted"></div>
+
+	<div id="xfooter" class=" col-lg-12 text-muted"></div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="../../ReadOnly/jquery-1.js"></script>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="../../ReadOnly/bootstrap.js"></script>
+
+</body>
+</html>
